@@ -6,6 +6,7 @@
   color: #fff;
   margin-right: 20px;
 }
+
 .navbar .nav-item .nav-link {
   color: #fff;
   margin-right: 20px;
@@ -13,9 +14,227 @@
   text-align: center;
   border-radius: 50px;
 }
-
 .navbar .nav-link:hover {
   background-color: #ffffff;
   color: #fd6a01; /* Color al pasar el mouse por encima */
   border-radius: 50px;
 }
+.container {
+  max-width: 124rem;
+  padding: 4rem 1rem;
+  margin: 0 auto;
+}
+.heading {
+  padding: 1rem 0;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #fd6a01; 
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-family: 'Roboto', sans-serif; /* Fuente del párrafo */
+}
+.line {
+  width: 10rem;
+  height: 0.5rem;
+  background-color: #fd6a01; /* Línea naranja */
+  margin: 0 auto 2rem auto; /* Centra la línea y añade margen inferior */
+}
+.line-small {
+  width: 5rem;
+  height: 0.4rem;
+  background-color: #fd6a01; /* Línea naranja */
+  margin: 0 auto 2rem auto; /* Centra la línea y añade margen inferior */
+}
+.description {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #444; /* Color de texto suave para mejorar la legibilidad */
+  font-family: 'Roboto', sans-serif; /* Fuente del párrafo */
+}
+
+
+.swiper_container {
+  height: 52rem;
+  padding: 2rem 0;
+  position: relative;
+  padding-bottom: 40px; /* Espacio para la paginación */
+
+}
+.swiper-slide {
+  width: 37rem;
+  height: 42rem;
+  position: relative;
+}
+@media (max-width: 500px) {
+  .swiper_container {
+    height: 47rem;
+  }
+  .swiper-slide {
+    width: 28rem !important;
+    height: 36rem !important;
+  }
+  .swiper-slide img {
+    width: 28rem !important;
+    height: 36rem !important;
+  }
+}
+.swiper-slide img {
+  width: 35rem;
+  height: 40rem;
+  border-radius: 2rem;
+  object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para la escala y la sombra */
+}
+
+.swiper-slide img:hover {
+  transform: scale(1.07); /* Aumenta la escala de la imagen al pasar el mouse */
+  box-shadow: 0px 8px 24px rgba(18, 28, 53, 0.2); /* Añade una sombra al pasar el mouse */
+}
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+  display: none;
+}
+.slider-controler {
+  position: relative;
+  bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slider-controler .swiper-button-next {
+  left: 58% !important;
+  transform: translateX(-58%) !important;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fd6a01; /* Color principal del icono */
+  position: absolute;
+  font-size: 38px; /* Ajusta el tamaño del ícono */
+  top: -100%; /* Deja de usar top para posicionar verticalmente */
+  bottom: 2rem; /* Alinea las flechas con la paginación */
+  z-index: 10;
+  cursor: pointer;
+  background: #fff; /* Fondo blanco */
+  padding: 10px;
+  border-radius: 50%; /* Forma circular */
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Transiciones para suavizar los cambios */
+}
+.slider-controler .swiper-button-next:hover{
+  color: #000000;
+}
+.slider-controler .swiper-button-prev:hover{
+  color: #000000; 
+}
+@media (max-width: 990px) {
+  .slider-controler .swiper-button-next {
+    left: 70% !important;
+    transform: translateX(-70%) !important;
+  }
+}
+@media (max-width: 450px) {
+  .slider-controler .swiper-button-next {
+    left: 80% !important;
+    transform: translateX(-80%) !important;
+  }
+}
+@media (max-width: 990px) {
+  .slider-controler .swiper-button-prev {
+    left: 30% !important;
+    transform: translateX(-30%) !important;
+  }
+}
+@media (max-width: 450px) {
+  .slider-controler .swiper-button-prev {
+    left: 20% !important;
+    transform: translateX(-20%) !important;
+  }
+}
+.slider-controler .slider-arrow {
+  background: var(--white);
+  width: 3.5rem;
+  height: 3.5rem;
+  left: 42%;
+  transform: translateX(-42%);
+  filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
+}
+.slider-controler .slider-arrow{
+  font-size: 2rem;
+  color: #fd6a01;
+}
+.slider-controler .slider-arrow::after {
+  content: '';
+}
+.swiper-pagination {
+  position: relative;
+  width: 15rem !important;
+  bottom: 1rem;
+  user-select: none; /* Desactiva la selección de texto */
+  pointer-events: none; /* Desactiva la posibilidad de interacción */
+
+}
+.swiper-pagination .swiper-pagination-bullet {
+  filter: drop-shadow(0px 8px 24px rgba(18, 28, 53, 0.1));
+  pointer-events: all; /* Rehabilita la interacción con los bullets */
+
+}
+.swiper-pagination .swiper-pagination-bullet-active {
+  background: #fd6a01
+}
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Para que las tarjetas se ajusten en pantallas pequeñas */
+  gap: 0.5rem; /* Espacio entre las tarjetas */
+}
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para la escala y la sombra */
+
+}
+.card:hover{
+  cursor: pointer;
+  transform: scale(1.07); /* Aumenta la escala de la imagen al pasar el mouse */
+  box-shadow: 0px 8px 24px rgba(18, 28, 53, 0.2); /* Añade una sombra al pasar el mouse */
+}
+
+.card-icon {
+  margin-bottom: 1rem;
+}
+
+.card-description {
+  margin-top: 1rem;
+}
+
+.card-description h3 {
+  color: #fd6a01;
+  margin-bottom: 0.5rem;
+}
+
+.card-description p {
+  color: #444;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 100%;
+  }
+}
+
