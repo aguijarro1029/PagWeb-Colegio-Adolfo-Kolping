@@ -1,11 +1,4 @@
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-  color: #333;
-}
+
 
 .main-content {
   display: flex;
@@ -37,15 +30,12 @@
 
 .history p {
   margin-bottom: 1em;
+  text-align: justify;
 }
 
 /* Otros estilos */
 h1, h2 {
   color: #fd6a01; /* Color para los títulos */
-}
-
-p {
-  text-align: justify;
 }
 
 h1 {
@@ -86,6 +76,20 @@ h1 {
 .side-content {
   flex: 1;
   margin-right: 20px; /* Espacio entre el contenido principal y las imágenes */
+}
+
+.side-content p {
+   text-align: justify;
+}
+
+.escuela {
+  flex: 1;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.escuela p{
+  text-align: justify;
 }
 
 .side-images {

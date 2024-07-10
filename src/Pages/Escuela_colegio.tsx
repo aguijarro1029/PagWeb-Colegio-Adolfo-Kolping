@@ -58,7 +58,7 @@ const cardsData = [
 const Escuela_colegio: React.FC = () => {
   return (
     
-    <div className="container">
+    <div className="escuela">
       <h1>Escuela y Colegio</h1>
       <p>La Unidad Educativa “Adolfo-Kolping” es situada en Yaruquíes, un pueblecito de 3500 habitantes  en una altura de 2800 m en los Andes, 
         en la falda del volcán mas alto de la provincia, el Chimborazo (6310 m).  La provincia Chimborazo, completamente  indígena, 
