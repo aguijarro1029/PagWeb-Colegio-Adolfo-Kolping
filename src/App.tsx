@@ -10,6 +10,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import Escuela_colegio from './Pages/Escuela_colegio';
+import Direccion from './Pages/Direccion';
+import Historia from './Pages/Historia';
 
 const App: React.FC = () => {
   return (
@@ -20,6 +23,9 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/escuelaycolegio" element={<Escuela_colegio />} />
+            <Route path="/direccion" element={<Direccion />} />
+            <Route path="/historia" element={<Historia />} />
             <Route path="/talleres" element={<Talleres />} />
           </Routes>
         </main>

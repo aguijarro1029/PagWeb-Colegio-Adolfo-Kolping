@@ -1,0 +1,139 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap; /* Envolver elementos en filas adicionales si no caben en una sola fila */
+}
+
+.image-container {
+  width: 50%;
+  border-radius: 8px; /* Bordes curvos */
+}
+
+.full-width-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px; /* Bordes curvos */
+}
+
+.text-content {
+  width: 50%;
+  padding: 20px;
+  text-align: justify;
+}
+
+.history h2 {
+  text-align: center;
+}
+
+.history p {
+  margin-bottom: 1em;
+}
+
+/* Otros estilos */
+h1, h2 {
+  color: #fd6a01; /* Color para los títulos */
+}
+
+p {
+  text-align: justify;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px; /* Espacio debajo de los títulos */
+}
+
+/* Estilos específicos para el diseño responsive */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-container, .text-content {
+    width: 100%;
+  }
+
+  .text-content {
+    padding-top: 20px;
+  }
+
+  .side-content {
+    margin-right: 0; /* Eliminar margen derecho en dispositivos móviles */
+    margin-bottom: 20px; /* Espacio inferior en dispositivos móviles */
+  }
+
+  .side-images {
+    flex-direction: row; /* Mostrar imágenes en fila en dispositivos móviles */
+    align-items: flex-start; /* Alinear imágenes hacia arriba en dispositivos móviles */
+  }
+
+  .side-images img {
+    width: calc(50% - 5px); /* Ajustar tamaño de las imágenes en dispositivos móviles */
+  }
+}
+
+.side-content {
+  flex: 1;
+  margin-right: 20px; /* Espacio entre el contenido principal y las imágenes */
+}
+
+.side-images {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Alinear imágenes a la derecha */
+  gap: 15px; /* Espacio entre las imágenes */
+}
+
+.side-images img {
+  width: 400px; /* Ajustar tamaño de las imágenes */
+  height: auto; /* Altura automática */
+  border-radius: 8px; /* Bordes curvos */
+}
+
+.images-centered {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px; /* Espacio debajo de la imagen centrada */
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-container .card {
+  width: 300px; /* Ajusta este tamaño según tus necesidades */
+  margin: 0 auto;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.institucion, .vision {
+  margin-top: 20px; /* Espacio encima de las secciones */
+}
+
+a {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
