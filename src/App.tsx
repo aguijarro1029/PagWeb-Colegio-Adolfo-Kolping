@@ -13,6 +13,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Escuela_colegio from './Pages/Escuela_colegio';
 import Direccion from './Pages/Direccion';
 import Historia from './Pages/Historia';
+import Voluntarios from './Pages/Voluntarios';
 import Contact from './Pages/Contact';
 
 const App: React.FC = () => {
@@ -29,6 +30,7 @@ const App: React.FC = () => {
             <Route path="/historia" element={<Historia />} />
             <Route path="/talleres" element={<Talleres />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/voluntarios" element={<Voluntarios />} />
           </Routes>
         </main>
         <Footer />
