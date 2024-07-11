@@ -1,5 +1,3 @@
-
-
 .main-content {
   display: flex;
   justify-content: space-between;
@@ -120,13 +118,33 @@ h1 {
 
 .card-container .card {
   width: 300px; /* Ajusta este tamaño según tus necesidades */
-  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: white;
   text-align: center;
 }
 
-.card img {
-  width: 100%;
-  height: auto;
+.card-container .card h2 {
+  margin: 20px 0;
+  color: #fd6a01;
+}
+
+.card-container .card p, .card-container .card ul {
+  text-align: justify;
+}
+
+.card-container .card a {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+.card-container .card a:hover {
+  text-decoration: underline;
+}
+
+.card-container .card .fa {
+  margin-bottom: 10px;
 }
 
 .institucion, .vision {
