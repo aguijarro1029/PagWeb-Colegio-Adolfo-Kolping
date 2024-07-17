@@ -202,6 +202,21 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para la escala y la sombra */
 
 }
+.card-circular {
+  background-color: #fff;
+  border-radius: 50%; /* Cambiado a 50% para ser perfectamente circular */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;; /* Asegúrate de que el ancho y la altura sean iguales */
+  height: 300px; /* Añade la altura igual al ancho */
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 10px;
+  border: 1px solid rgb(202, 202, 202);
+}
+
+
 .card:hover{
   cursor: pointer;
   transform: scale(1.07); /* Aumenta la escala de la imagen al pasar el mouse */
@@ -238,3 +253,14 @@
   }
 }
 
+@media (max-width: 768px) {
+  .logo {
+    height: 60px;
+    width: 30px;
+    content: url('./assets/Img/Logo_Ut.png'); /* Cambia la ruta al logo móvil */
+  }
+  .container3{
+    flex-direction: column;
+    display:flex;
+  }
+}

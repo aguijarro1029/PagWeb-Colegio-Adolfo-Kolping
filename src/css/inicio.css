@@ -96,12 +96,33 @@ h1 {
   align-items: flex-end; /* Alinear imágenes a la derecha */
   gap: 15px; /* Espacio entre las imágenes */
 }
+.side-images2 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacio entre las imágenes */
+  background-image: url('../assets/Img/Imagen-inicio5.jpg');
+  background-size: cover;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+  background-blend-mode: darken; /* Cambia a 'darken' o 'multiply' */
+  background-color: rgba(0, 0, 0, 0.5); /* Color negro semi-transparente */
+}
 
+.container3{
+  height: 600px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  align-content: center;
+  display: flex;
+}
 .side-images img {
   width: 400px; /* Ajustar tamaño de las imágenes */
   height: auto; /* Altura automática */
   border-radius: 8px; /* Bordes curvos */
 }
+
 
 .images-centered {
   text-align: center;
