@@ -1,51 +1,89 @@
-import React from 'react';
-import logo from '../assets/Img/Logo_Ut.png';
+import React, {  useEffect, useState } from 'react';
+import logo from '../assets/Img/logo_adolfo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faCaretDown, faCircleXmark, faEnvelope, faGraduationCap, faHandsHoldingChild, faHouseUser, faToolbox } from '@fortawesome/free-solid-svg-icons';
+import { useLocation, Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const location=useLocation();
+  const toggleDropdown = () => {
+    setDropdownOpen(prevState => !prevState);
+  };
+  const handleResize = () => {
+    if (window.innerWidth <= 1200) {
+      setIsSmallScreen(true);
+    } else {
+      setIsSmallScreen(false);
+    }
+  };
+  const isActive = (path: string) => location.pathname === path ? 'active' : '';
+
+  useEffect(() => {
+    handleResize(); // Check on initial load
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  const handleMenuClick = () => {
+    setMenuOpen(prevState => !prevState);
+  };
+  const handleLinkClick = () => {
+    if (isSmallScreen) {
+      setMenuOpen(false); // Cierra el menú cuando se hace clic en un enlace en pantallas pequeñas
+    }
+  };
   return (
     <header>
-      <nav style={{ backgroundColor: '#fd6a01' }} className="navbar navbar-expand-lg">
-        <div className="container-fluid">
-          <img src={logo} className='logo' height={"90px"} width={"590px"} alt="Logo" />
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">Inicio</a>
-              </li>
-              <li className="nav-item dropdown" onMouseOver={(e) => {
-                const dropdownMenu = e.currentTarget.querySelector('.dropdown-menu');
-                if (dropdownMenu) {
-                  dropdownMenu.classList.add('show');
-                }
-              }} onMouseLeave={(e) => {
-                const dropdownMenu = e.currentTarget.querySelector('.dropdown-menu');
-                if (dropdownMenu) {
-                  dropdownMenu.classList.remove('show');
-                }
-              }}>
-                <a className="nav-link active" href="/escuelaycolegio">
-                  Escuela y Colegio
-                </a>
-                <ul className="dropdown-menu">
-                  <li><a className="dropdown-item" href="/direccion">Dirección</a></li>
-                  <li><a className="dropdown-item" href="/historia">Historia</a></li>
-                </ul>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" href="/talleres">Talleres</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" href="/voluntarios">Voluntarios</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" href="/contact">Contacto</a>
-              </li>
-            </ul>
-          </div>
+      <nav className='navbar-items'>
+        <Link to={"/"}>
+        <div className='navbar-logo'>
+          <img
+            src={ logo}
+            className='logo'
+            alt="Logo"
+          />        
         </div>
+        </Link>
+        
+        <div className='menu-icons' onClick={handleMenuClick}>
+        {menuOpen ? (
+          <FontAwesomeIcon icon={faCircleXmark} />
+          ) : (
+            <FontAwesomeIcon icon={faBars} />
+          )}
+        </div>
+        <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+        <li>
+            <Link className={`nav-links ${isActive('/')}`} to="/" onClick={handleLinkClick}>
+              <FontAwesomeIcon icon={faHouseUser}/> Inicio
+            </Link>
+          </li>
+          <li className='nav-dropdown'>
+            <Link className='nav-links' to={"/escuelaycolegio"}><FontAwesomeIcon icon={faGraduationCap} /> Escuela y colegio <FontAwesomeIcon icon={faCaretDown} /></Link>
+            <ul className={`dropdown-menu ${dropdownOpen ? 'show' : ''}`}>
+              <li><Link className={`nav-links ${isActive('/direccion')}`} to="/direccion" onClick={handleLinkClick}>Dirección</Link></li>
+              <li><Link className={`nav-links ${isActive('/historia')}`} to="/historia" onClick={handleLinkClick}>Historia</Link></li>
+            </ul>
+          </li>
+          <li>
+            <Link className={`nav-links ${isActive('/talleres')}`} to="/talleres" onClick={handleLinkClick}>
+              <FontAwesomeIcon icon={faToolbox}/> Talleres
+            </Link>
+          </li>
+          <li>
+            <Link className={`nav-links ${isActive('/voluntarios')}`} to="/voluntarios" onClick={handleLinkClick}>
+              <FontAwesomeIcon icon={faHandsHoldingChild} /> Voluntarios
+            </Link>
+          </li>
+          <li>
+            <Link className={`nav-links ${isActive('/contact')}`} to="/contact" onClick={handleLinkClick}>
+              <FontAwesomeIcon icon={faEnvelope}/> Contacto
+            </Link>
+          </li>
+        </ul>
       </nav>
     </header>
   );
