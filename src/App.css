@@ -460,3 +460,8 @@
     max-width: 100px; /* Ajusta el ancho máximo para pantallas medianas */
   }
 }
+@media (max-width: 500) {
+  .logo {
+    max-width: 60px; /* Ajusta el ancho máximo para pantallas medianas */
+  }
+}
