@@ -1,51 +1,66 @@
 .main-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: flex-start;
-  flex-wrap: wrap; /* Envolver elementos en filas adicionales si no caben en una sola fila */
+  gap: 20px;/* Envolver elementos en filas adicionales si no caben en una sola fila */
+}
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.text-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .image-container {
-  width: 50%;
-  border-radius: 8px; /* Bordes curvos */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-
 .full-width-image {
   width: 100%;
   height: auto;
-  border-radius: 8px; /* Bordes curvos */
+  border-radius: 8px;
+}
+
+.small-image {
+  width: 100%; /* Reducir el tamaño de la segunda imagen */
+  align-self: flex-start; /* Alinearla al inicio para que no sea centrada */
 }
 
 .text-content {
-  width: 50%;
+  flex: 1;
   padding: 20px;
-  text-align: justify;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .history h2 {
   text-align: center;
+  color: #fd6a01;
+  margin-bottom: 20px;
 }
 
 .history p {
   margin-bottom: 1em;
   text-align: justify;
+  line-height: 1.6;
+  color: #333;
 }
 
-/* Otros estilos */
-h1, h2 {
-  color: #fd6a01; /* Color para los títulos */
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px; /* Espacio debajo de los títulos */
-}
 
 /* Estilos específicos para el diseño responsive */
 @media (max-width: 768px) {
   .main-content {
     flex-direction: column;
-    align-items: center;
+    
   }
 
   .image-container, .text-content {
@@ -53,7 +68,7 @@ h1 {
   }
 
   .text-content {
-    padding-top: 20px;
+    padding-top: 10px;
   }
 
   .side-content {
@@ -68,6 +83,9 @@ h1 {
 
   .side-images img {
     width: calc(50% - 5px); /* Ajustar tamaño de las imágenes en dispositivos móviles */
+  }
+  .history h2 {
+    font-size: 1.5em;
   }
 }
 
