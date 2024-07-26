@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css?family=Heebo:400,700|Open+Sans:400,700');
+
+:root {
+	--color: #3c3163;
+	--transition-time: 0.5s;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+	margin: 0;
+	min-height: 100vh;
+	font-family: 'Open Sans';
+	background: #fafafa;
+}
+
+a {
+	color: inherit;
+}
+
+.cards-wrapper {
+	display: grid;
+	justify-content: center;
+	align-items: center;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 4rem;
+	padding: 4rem;
+	margin: 0 auto;
+	width: max-content;
+}
+
+.card-home {
+	font-family: 'Heebo';
+	--bg-filter-opacity: 0.5;
+	background-image: linear-gradient(rgba(0, 0, 0, var(--bg-filter-opacity)), rgba(0, 0, 0, var(--bg-filter-opacity))), var(--bg-img);
+	height: 18em;
+	width: 15em;
+	font-size: 1.5em;
+	color: white;
+	border-radius: 1em;
+	padding: 1em;
+	display: flex;
+	align-items: flex-end;
+	background-size: cover;
+	background-position: center;
+	box-shadow: 0 0 5em -1em black;
+	transition: all, var(--transition-time);
+	position: relative;
+	overflow: hidden;
+	border: 10px solid  #fd6a01;;
+	text-decoration: none;
+    background-blend-mode: darken; /* Cambia a 'darken' o 'multiply' */
+    background-color: rgba(0, 0, 0, 0.7); 
+}
+
+.card-home:hover {
+	transform: rotate(0);
+    text-decoration: none;
+}
+
+.card-home h1 {
+    color:'white';
+	margin: 0;
+	font-size: 1.5em;
+	line-height: 1.2em;
+}
+
+.card-home p {
+	font-size: 0.75em;
+    color:'white';
+
+	font-family: 'Open Sans';
+	margin-top: 0.5em;
+	line-height: 2em;
+}
+
+.card-home .tags {
+	display: flex;
+}
+.icon-card{
+    color: white;
+}
+.card-home:hover .div-parrafo{
+    display: block; /* O el valor apropiado como inline o flex */
+}
+.div-parrafo{
+    display: none;
+}
+.parrafo-card {
+    display: block; /* Asegúrate de que el párrafo esté bloqueado */
+    opacity: 0; /* Ocultamos el párrafo inicialmente */
+    transition: opacity 0.3s ease; /* Animación suave para la transición */
+}
+
+.card-home:hover .parrafo-card {
+    opacity: 1; /* Mostramos el párrafo cuando se pasa el ratón */
+}
+
+.card-home:hover .icon-card,
+.card-home:hover .title-card {
+    color: #fd6a01; /* Cambia el color del icono y el título al pasar el ratón */
+}
+.title-card{
+    color: white;
+}
+.card-home .tags .tag {
+	font-size: 0.75em;
+	background: rgba(255, 255, 255, 0.5);
+	border-radius: 0.3rem;
+	padding: 0 0.5em;
+	margin-right: 0.5em;
+	line-height: 1.5em;
+	transition: all, var(--transition-time);
+}
+
+.card-home:hover .tags .tag {
+	background: var(--color);
+	color: white;
+}
+
+.card-home .date {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 0.75em;
+	padding: 1em;
+	line-height: 1em;
+	opacity: .8;
+}
+
+
+.card-home:before,
+.card-home:after {
+	content: '';
+	transform: scale(0);
+	transform-origin: top left;
+	border-radius: 50%;
+	position: absolute;
+	left: -50%;
+	top: -50%;
+	z-index: -5;
+	transition: all, var(--transition-time);
+	transition-timing-function: ease-in-out;
+}
+
+.card-home:before {
+	background: #ddd;
+	width: 250%;
+	height: 250%;
+}
+
+.card-home:after {
+	background: white;
+	width: 200%;
+	height: 200%;
+}
+
+.card-home:hover {
+	color:  #fd6a01;;
+}
+
+.card-home:hover:before,
+.card-home:hover:after {
+	transform: scale(1);
+}
+
+.card-grid-space .num {
+	font-size: 3em;
+	margin-bottom: 1.2rem;
+	margin-left: 1rem;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1285px) {
+	.cards-wrapper {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.cards-wrapper {
+		grid-template-columns: 1fr;
+	}
+
+	.card-grid-space .num {
+		margin-left: 0;
+		text-align: center;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.cards-wrapper {
+		padding: 4rem 2rem;
+	}
+
+	.card-home {
+		max-width: calc(100vw - 4rem);
+	}
+}
+
+
+
+.lottie-text-section {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .lottie-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .text-item {
+    flex: 1;
+    padding: 0 20px;
+  }
+  
+  .lottie-text-section.reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .lottie-item > div {
+    max-width: 700px; /* Ajusta el tamaño de la animación si es necesario */
+    height: 400px;
+  }
+  
+  .text-item h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .text-item p {
+    font-size: 1em;
+  }
+  
+
+  .scroll-container {
+	overflow: hidden;
+	white-space: nowrap;
+  }
+  
+  .container-convenios {
+	display: inline-block;
+	animation: scroll 20s linear infinite;
+  }
+  
+  .container-convenios img {
+	margin: 40px;
+	display: inline-block;
+  }
+  
+  @keyframes scroll {
+	0% {
+	  transform: translateX(0%);
+	}
+	100% {
+	  transform: translateX(-50%);
+	}
+  }
+  
+  
