@@ -19,8 +19,7 @@ import casamemorias from '../assets/Img/convenios/casamemorias.png'
 import instituto from '../assets/Img/convenios/institutosuperior.png'
 import municipio from '../assets/Img/convenios/municipioriobamba.png'
 import imagenInicio1 from '../assets/Img/Imagen-inicio5.jpg'
-import imagenInicio2 from '../assets/Img/Imagen-inicio1.jpg'
-import imagenInicio3 from '../assets/Img/Imagen-inicio2.jpg'
+
 
 
 const Home: React.FC = () => {
@@ -58,22 +57,6 @@ const Home: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="thumbnail">
-            <div className="item">
-              <img src={imagenInicio3} alt="imagenInicio1" />
-              <div className="content">
-                <div className="title">Escuela</div>
-              </div>
-              <div className="hover-content">Educación básica de calidad para todos.</div>
-              </div>
-            <div className="item">
-              <img src={imagenInicio2} alt="imagenInicio1" />
-              <div className="content">
-                <div className="title">Colegio</div>
-              </div>
-              <div className="hover-content">Formación técnica y profesional.</div>
-              </div>
           </div>
         </div>
           <section className="cards-wrapper">
