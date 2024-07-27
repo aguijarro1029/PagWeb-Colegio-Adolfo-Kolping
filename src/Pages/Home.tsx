@@ -54,7 +54,7 @@ const Home: React.FC = () => {
                 <div className='des'>La Unidad Educativa Adolfo Kolping brinda una educación integral en los Andes del Ecuador, ofreciendo formación básica y técnica.
                 </div>
                 <div className='buttons'>
-                  <button onClick={handleScrollToHistory} style={{padding:'12px',marginTop:'10px', alignContent:'center', justifyItems:'center'}}>Aprende más</button>
+                  <button onClick={handleScrollToHistory} style={{padding:'12px', marginTop:'10px'}}>Aprende más</button>
                 </div>
               </div>
             </div>
