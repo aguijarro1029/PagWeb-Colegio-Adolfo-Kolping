@@ -61,7 +61,7 @@ const Home: React.FC = () => {
         </div>
           <section className="cards-wrapper">
           <div className="card-grid-space">
-            <a className="card-home" href="/escuelaycolegio" style={{ backgroundImage: "url('https://askerweb.by/wp-content/uploads/2021/06/Oblozhka-16.jpg')" }}>
+            <a className="card-home" href="/escuelaycolegio" style={{ backgroundImage: "url('http://ak.gibts.net/wordpress/wp-content/uploads/2017/04/Un-poco-de-histori%CC%81a-Foto-Spanischer-Text.jpg')" }}>
             <div style={{
               display: 'flex',
               flexDirection: 'column', 
@@ -84,7 +84,7 @@ const Home: React.FC = () => {
             </a>
           </div>
           <div className="card-grid-space">
-            <a className="card-home" href="#" style={{ backgroundImage: "url('https://askerweb.by/wp-content/uploads/2021/06/Oblozhka-16.jpg')" }}>
+            <a className="card-home" href="#" style={{ backgroundImage: "url('http://adolfo-kolping.de/wordpress/wp-content/gallery/gastromonie/gastro16.jpg')" }}>
               <div style={{
               display: 'flex',
               flexDirection: 'column', 
@@ -106,7 +106,7 @@ const Home: React.FC = () => {
             </a>
           </div>
           <div className="card-grid-space">
-            <a className="card-home" href="#" style={{ backgroundImage: "url('https://askerweb.by/wp-content/uploads/2021/06/Oblozhka-16.jpg')" }}>
+            <a className="card-home" href="#" style={{ backgroundImage: "url('http://ak.gibts.net/wordpress/wp-content/uploads/2017/04/Indi%CC%81gena-Familie.jpg')" }}>
               <div style={{ textAlign: 'center' }}>
                 <FontAwesomeIcon className='icon-card' icon={faEye} size="3x" color="#fd6a01" />
                 <h1 className='title-card'>Visión</h1>
