@@ -121,11 +121,11 @@ const Home: React.FC = () => {
         </section>
         <div className="line2"></div>
         <h1 id='history-section' className='talleres-title'>HISTORIA</h1>
-
+        <div style={{padding:'50px'}}>
         <section className="lottie-text-section reverse">
           <div className="text-item">
             <h2>Fundación de la Escuela</h2>
-            <p style={{textAlign:'justify'}}>La Unidad Educativa Adolfo Kolping fue fundada en el año 1999 por el sacerdote Wolfgang Schaft, conocido cariñosamente como el Padre Lobito. Su misión era atacar la pobreza y brindar oportunidades educativas a los jóvenes de la parroquia Yaruquíes, Ecuador. Con el apoyo de la comunidad y ayuda extranjera, estableció varios proyectos, incluyendo el Centro de Formación Artesanal “Adolfo Kolping”.</p>
+            <p >La Unidad Educativa Adolfo Kolping fue fundada en el año 1999 por el sacerdote Wolfgang Schaft, conocido cariñosamente como el Padre Lobito. Su misión era atacar la pobreza y brindar oportunidades educativas a los jóvenes de la parroquia Yaruquíes, Ecuador. Con el apoyo de la comunidad y ayuda extranjera, estableció varios proyectos, incluyendo el Centro de Formación Artesanal “Adolfo Kolping”.</p>
           </div>
           <div className="lottie-item">
             <Lottie animationData={lottieData} loop={true} />
@@ -135,7 +135,7 @@ const Home: React.FC = () => {
         <section className="lottie-text-section">
           <div className="text-item">
             <h2>Inspiración y Primeros Pasos</h2>
-            <p style={{textAlign:'justify'}}>El Padre Wolfgang Schaft llegó a Yaruquíes en 1996 y rápidamente identificó la necesidad de una educación técnica para los jóvenes locales. Inspirado por el beato Adolfo Kolping, comenzó a reunir a la comunidad para crear un centro que ofreciera formación en diversas especialidades artesanales. A pesar de los desafíos iniciales, como la falta de recursos, la escuela comenzó a funcionar el 11 de octubre de 1999 en las instalaciones facilitadas por la escuela Domingo Carrillo.</p>
+            <p >El Padre Wolfgang Schaft llegó a Yaruquíes en 1996 y rápidamente identificó la necesidad de una educación técnica para los jóvenes locales. Inspirado por el beato Adolfo Kolping, comenzó a reunir a la comunidad para crear un centro que ofreciera formación en diversas especialidades artesanales. A pesar de los desafíos iniciales, como la falta de recursos, la escuela comenzó a funcionar el 11 de octubre de 1999 en las instalaciones facilitadas por la escuela Domingo Carrillo.</p>
           </div>
           <div className="lottie-item">
             <Lottie animationData={lottieData2} loop={true} />
@@ -145,7 +145,7 @@ const Home: React.FC = () => {
         <section className="lottie-text-section reverse">
           <div className="text-item">
             <h2>Desafíos y Crecimiento</h2>
-            <p style={{textAlign:'justify'}}>Desde sus inicios, el Centro de Formación Artesanal Particular “Adolfo Kolping” enfrentó numerosos desafíos, incluyendo la construcción de un edificio propio y la obtención de la aprobación oficial. Con el esfuerzo de la comunidad y el apoyo de voluntarios extranjeros, el centro creció significativamente, ofreciendo especialidades como Mecánica en General, Ebanistería, Tejido Típico en Telar y Cerámica.</p>
+            <p >Desde sus inicios, el Centro de Formación Artesanal Particular “Adolfo Kolping” enfrentó numerosos desafíos, incluyendo la construcción de un edificio propio y la obtención de la aprobación oficial. Con el esfuerzo de la comunidad y el apoyo de voluntarios extranjeros, el centro creció significativamente, ofreciendo especialidades como Mecánica en General, Ebanistería, Tejido Típico en Telar y Cerámica.</p>
           </div>
           <div className="lottie-item">
             <Lottie animationData={lottieData3} loop={true} />
@@ -155,12 +155,13 @@ const Home: React.FC = () => {
         <section className="lottie-text-section">
           <div className="text-item">
             <h2>Legado del Padre Wolfgang Schaft</h2>
-            <p style={{textAlign:'justify'}}>El legado del Padre Wolfgang Schaft perdura a través de la Unidad Educativa Adolfo Kolping, que sigue formando a jóvenes en diversas especialidades técnicas. Su visión de "Formando para la vida y servir a la sociedad" continúa guiando a la institución, que hoy en día ofrece una educación integral desde el 1° EGB hasta el bachillerato técnico, incluyendo formación en Mecánica General, Carpintería y Gastronomía.</p>
+            <p >El legado del Padre Wolfgang Schaft perdura a través de la Unidad Educativa Adolfo Kolping, que sigue formando a jóvenes en diversas especialidades técnicas. Su visión de "Formando para la vida y servir a la sociedad" continúa guiando a la institución, que hoy en día ofrece una educación integral desde el 1° EGB hasta el bachillerato técnico, incluyendo formación en Mecánica General, Carpintería y Gastronomía.</p>
           </div>
           <div className="lottie-item">
             <Lottie animationData={lottieData4} loop={true} />
           </div>
         </section>
+        </div>
 
         <div className="line2"></div>
         <h1 className='talleres-title'>DIRECCIÓN</h1>
