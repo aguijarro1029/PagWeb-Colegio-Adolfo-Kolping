@@ -75,7 +75,7 @@ const Header: React.FC = () => {
           </li>
           <li>
             <Link className={`nav-links ${isActive('/voluntarios')}`} to="/voluntarios" onClick={handleLinkClick}>
-              <FontAwesomeIcon icon={faHandsHoldingChild} /> Voluntarios
+              <FontAwesomeIcon icon={faHandsHoldingChild} /> Estudiantes
             </Link>
           </li>
           <li>

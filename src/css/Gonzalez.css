@@ -1,0 +1,143 @@
+/* Estilos de Voluntarios */
+.volunteer-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .volunteer-details {
+    margin-bottom: 30px;
+  }
+  
+  .volunteer-details h2 {
+    font-size: 1.8em;
+    color: #fd6a01;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .volunteer-details p,
+  .volunteer-details ol {
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  .volunteer-details ol {
+    padding-left: 20px;
+  }
+  
+  .volunteer-details ol li {
+    margin-bottom: 15px;
+  }
+
+/*
+CONTACTO
+*/
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Contact page styles */
+  .contact-page {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .contact-title {
+    text-align: center;
+    color: #fd6a01;
+    margin-bottom: 20px;
+  }
+  
+  .contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  
+  .contact-details, .contact-form-container {
+    flex: 1;
+    min-width: 300px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact-details h2, .contact-form-container h2 {
+    color: #fd6a01;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .contact-details p, .contact-details address {
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  .contact-details address {
+    font-style: normal;
+  }
+  
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-form label {
+    font-size: 1.1em;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .contact-form input, .contact-form textarea {
+    font-size: 1em;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .contact-form button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #fd6a01;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .contact-form button:hover {
+    background-color: #e55d00;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .contact-content {
+      flex-direction: column;
+    }
+  }
+
+
+
+
+  
+  

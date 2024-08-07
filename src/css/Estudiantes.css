@@ -1,0 +1,90 @@
+/* Estilos de Voluntarios */
+.volunteers-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .title {
+    font-size: 2.5em;
+    color: #fd6a01;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  
+  .subtitle {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .volunteer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .volunteer-section {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .volunteer-section.alternate {
+    flex-direction: row-reverse;
+  }
+  
+  .volunteer-text {
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.6;
+    text-align: justify;
+    flex: 1;
+    margin: 0 20px;
+  }
+  
+  .volunteer-image-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .volunteer-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .volunteer-image:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .volunteer-section {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .volunteer-section.alternate {
+      flex-direction: column;
+    }
+  
+    .volunteer-text {
+      margin: 20px 0;
+    }
+  
+    .volunteer-image {
+      max-width: 100%;
+    }
+  }
+  
