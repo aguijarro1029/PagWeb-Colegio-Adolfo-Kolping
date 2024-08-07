@@ -1,18 +1,15 @@
 import React, {  useEffect, useState } from 'react';
 import logo from '../assets/Img/logo_adolfo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCaretDown, faCircleXmark, faEnvelope, faGraduationCap, faHandsHoldingChild, faHouseUser, faToolbox } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCircleXmark, faEnvelope, faHandsHoldingChild, faHouseUser, faToolbox } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const location=useLocation();
-  const toggleDropdown = () => {
-    setDropdownOpen(prevState => !prevState);
-  };
+ 
   const handleResize = () => {
     if (window.innerWidth <= 1200) {
       setIsSmallScreen(true);
@@ -61,13 +58,7 @@ const Header: React.FC = () => {
               <FontAwesomeIcon icon={faHouseUser}/> Inicio
             </Link>
           </li>
-          <li className='nav-dropdown'>
-            <Link className='nav-links' to={"/escuelaycolegio"}><FontAwesomeIcon icon={faGraduationCap} /> Escuela y colegio <FontAwesomeIcon icon={faCaretDown} /></Link>
-            <ul className={`dropdown-menu ${dropdownOpen ? 'show' : ''}`}>
-              <li><Link className={`nav-links ${isActive('/direccion')}`} to="/direccion" onClick={handleLinkClick}>Dirección</Link></li>
-              <li><Link className={`nav-links ${isActive('/historia')}`} to="/historia" onClick={handleLinkClick}>Historia</Link></li>
-            </ul>
-          </li>
+         
           <li>
             <Link className={`nav-links ${isActive('/talleres')}`} to="/talleres" onClick={handleLinkClick}>
               <FontAwesomeIcon icon={faToolbox}/> Talleres
