@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Container, Heading, HStack, IconButton, Text, Textarea } from "@chakra-ui/react"
 import FeedPosts from "../components/FeedPosts"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faImage, faLaughSquint } from "@fortawesome/free-solid-svg-icons";
+import { faImage, faLaughSquint, faVideo } from "@fortawesome/free-solid-svg-icons";
 const Novedades = () => {
     
   return (
@@ -42,6 +42,12 @@ const Novedades = () => {
                     aria-label="Añadir emoji"
                     variant="ghost"
                     color="#fd6a01" 
+                />
+                <IconButton
+                    icon={<FontAwesomeIcon icon={faVideo} />}
+                    aria-label="Añadir video"
+                    variant="ghost"
+                    color="#fd6a01"
                 />
                 </HStack>
                 <Button colorScheme="orange" bg="#fd6a01" borderRadius="full">

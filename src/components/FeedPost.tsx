@@ -19,7 +19,7 @@ const FeedPost = ({ user, time, content, image, videoUrl  }:FeedPostProps) => {
     <Box
       bg="#faf1eb" 
       borderRadius="md"
-      p={4}
+      p={7}
       borderWidth="1px"
       borderColor="#fd6a01" 
       color="black" 
