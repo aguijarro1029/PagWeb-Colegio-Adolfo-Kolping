@@ -15,6 +15,7 @@ import Direccion from './Pages/Direccion';
 import Historia from './Pages/Historia';
 import Voluntarios from './Pages/Voluntarios';
 import Contact from './Pages/Contact';
+import Novedades from './Pages/Novedades';
 
 const App: React.FC = () => {
   return (
@@ -24,6 +25,7 @@ const App: React.FC = () => {
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/novedades" element={<Novedades />} />
             <Route path="/about" element={<About />} />
             <Route path="/escuelaycolegio" element={<Escuela_colegio />} />
             <Route path="/direccion" element={<Direccion />} />
