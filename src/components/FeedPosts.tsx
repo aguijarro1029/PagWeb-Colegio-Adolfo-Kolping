@@ -29,6 +29,7 @@ const FeedPosts = () => {
         }}
         time="2024/08/05"
         content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem optio nam ducimus corrupti corporis et saepe odio. Vel iure optio dignissimos esse, suscipit mollitia! Eligendi debitis totam doloribus laudantium atque?"
+        videoUrl="https://www.youtube.com/watch?v=rLoWMU4L_qE"
       />
     </Container>
   );
