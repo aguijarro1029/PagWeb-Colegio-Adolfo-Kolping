@@ -12,6 +12,7 @@ import Historia from './Pages/Historia';
 import Voluntarios from './Pages/Voluntarios';
 import Contact from './Pages/Contact';
 import Login from './Pages/Login';
+import Novedades from './Pages/Novedades';
 import './App.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -28,6 +29,7 @@ const App: React.FC = () => {
       <main className="flex-grow-1">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/novedades" element={<Novedades />} />
           <Route path="/about" element={<About />} />
           <Route path="/escuelaycolegio" element={<Escuela_colegio />} />
           <Route path="/direccion" element={<Direccion />} />
@@ -39,7 +41,6 @@ const App: React.FC = () => {
         </Routes>
       </main>
 
-      {/* Condicionalmente renderiza Footer */}
       {!isLoginPage && <Footer />}
     </div>
   );
