@@ -1,7 +1,7 @@
 import React, {  useEffect, useState } from 'react';
 import logo from '../assets/Img/logo_adolfo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faCircleXmark, faEnvelope, faHandsHoldingChild, faHouseUser, faToolbox } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCircleXmark, faEnvelope, faHandsHoldingChild, faHouseUser, faToolbox , faUser  } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
@@ -72,6 +72,11 @@ const Header: React.FC = () => {
           <li>
             <Link className={`nav-links ${isActive('/contact')}`} to="/contact" onClick={handleLinkClick}>
               <FontAwesomeIcon icon={faEnvelope}/> Contacto
+            </Link>
+          </li>
+          <li>
+            <Link className={`nav-links ${isActive('/login')}`} to="/login" onClick={handleLinkClick}>
+              <FontAwesomeIcon icon={faUser }/>
             </Link>
           </li>
         </ul>
