@@ -19,6 +19,8 @@ import casamemorias from '../assets/Img/convenios/casamemorias.png'
 import instituto from '../assets/Img/convenios/institutosuperior.png'
 import municipio from '../assets/Img/convenios/municipioriobamba.png'
 import imagenInicio1 from '../assets/Img/Imagen-inicio5.jpg'
+import asamblea from '../assets/Img/convenios/asamblea.png'
+import prefectura from '../assets/Img/convenios/prefecturachimborazo.png'
 
 
 
@@ -204,6 +206,10 @@ const Home: React.FC = () => {
         </div>
         <div className="line2"></div>
         <h1 className='talleres-title'>RECONOCIMIENTO AL MÉRITO SOCIAL Y EDUCATIVO</h1>
+        <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+          <img width={'200px'} height={'200px'}  src={asamblea} alt="asamblea" />
+          <img width={'370px'} height={'100px'}  src={prefectura} alt="prefectura" />
+        </div>
       </div>
   );
 };
