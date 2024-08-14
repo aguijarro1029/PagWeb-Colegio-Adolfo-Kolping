@@ -485,3 +485,17 @@
     max-width: 60px; /* Ajusta el ancho máximo para pantallas medianas */
   }
 }
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-track{
+  background: #fd6a01;
+}
+::-webkit-scrollbar-thumb{
+  background: #292929;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: #555;
+}
+
+

@@ -5,32 +5,39 @@ import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 interface User {
     name: string;
     avatar: string;
-  }
+}
   
-  interface FeedPostProps {
+interface FeedPostProps {
     user: User;
     time: string;
     content: string;
-    image?: string; // `image` es opcional
-    videoUrl?:string;
-  }
-const FeedPost = ({ user, time, content, image, videoUrl  }:FeedPostProps) => {
+    image?: string;
+    videoUrl?: string;
+}
+  
+const FeedPost = ({ user, time, content, image, videoUrl }: FeedPostProps) => {
   return (
     <Box
-      bg="#faf1eb" 
+      bg="#faf1eb"
       borderRadius="md"
-      p={7}
+      p={6}
       borderWidth="1px"
-      borderColor="#fd6a01" 
-      color="black" 
+      borderColor="#fd6a01"
+      color="black"
       mb={4}
+      maxW="full"
+      minH="300px"
     >
-      <HStack justifyContent="space-between">
-        <HStack spacing={4}>
+      <HStack justifyContent="space-between" alignItems="center" alignContent="center"> 
+        <HStack spacing={3} alignItems="center"> 
           <Avatar size="md" name={user.name} src={user.avatar} />
-          <Flex align="start" gap={2} alignContent={"center"} textAlign={"center"} alignItems={"center"}>
-            <Text fontWeight="bold">{user.name}</Text>
-            <Text fontSize="sm" color="gray.700">{time}</Text>
+          <Flex direction="column">
+            <Text fontWeight="bold">
+              {user.name}
+            </Text>
+            <Text fontSize="sm" color="gray.700">
+              {time}
+            </Text>
           </Flex>
         </HStack>
         <IconButton
@@ -38,10 +45,14 @@ const FeedPost = ({ user, time, content, image, videoUrl  }:FeedPostProps) => {
           aria-label="Más opciones"
           variant="ghost"
           color="black"
+          size="sm" 
+          _hover={{ bg: "#ffb987" }} // Personaliza el color de hover
         />
       </HStack>
       <Box mt={4}>
-        <Text mb={2}>{content}</Text>
+        <Text mb={2}>
+          {content}
+        </Text>
         {image && <Image src={image} alt="Post image" borderRadius="md" />}
         {videoUrl && (
           <Box mt={4}>
