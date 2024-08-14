@@ -124,7 +124,7 @@ const Home: React.FC = () => {
         <div className="line2"></div>
         <h1 id='history-section' className='talleres-title'>HISTORIA</h1>
         <div style={{padding:'50px'}}>
-        <section className="lottie-text-section reverse">
+        <section className="lottie-text-section2">
           <div className="text-item">
             <h2>Fundación de la Escuela</h2>
             <p >La Unidad Educativa Adolfo Kolping fue fundada en el año 1999 por el sacerdote Wolfgang Schaft, conocido cariñosamente como el Padre Lobito. Su misión era atacar la pobreza y brindar oportunidades educativas a los jóvenes de la parroquia Yaruquíes, Ecuador. Con el apoyo de la comunidad y ayuda extranjera, estableció varios proyectos, incluyendo el Centro de Formación Artesanal “Adolfo Kolping”.</p>
@@ -144,7 +144,7 @@ const Home: React.FC = () => {
           </div>
         </section>
 
-        <section className="lottie-text-section reverse">
+        <section className="lottie-text-section2">
           <div className="text-item">
             <h2>Desafíos y Crecimiento</h2>
             <p >Desde sus inicios, el Centro de Formación Artesanal Particular “Adolfo Kolping” enfrentó numerosos desafíos, incluyendo la construcción de un edificio propio y la obtención de la aprobación oficial. Con el esfuerzo de la comunidad y el apoyo de voluntarios extranjeros, el centro creció significativamente, ofreciendo especialidades como Mecánica en General, Ebanistería, Tejido Típico en Telar y Cerámica.</p>
@@ -206,7 +206,7 @@ const Home: React.FC = () => {
         </div>
         <div className="line2"></div>
         <h1 className='talleres-title'>RECONOCIMIENTO AL MÉRITO SOCIAL Y EDUCATIVO</h1>
-        <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+        <div className='div-convenios2'>
           <img width={'200px'} height={'200px'}  src={asamblea} alt="asamblea" />
           <img width={'370px'} height={'100px'}  src={prefectura} alt="prefectura" />
         </div>

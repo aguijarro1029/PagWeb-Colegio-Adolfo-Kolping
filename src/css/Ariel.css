@@ -3,10 +3,12 @@
 :root {
 	--color: #3c3163;
 	--transition-time: 0.5s;
+	
 }
 
 * {
 	box-sizing: border-box;
+	
 }
 
 body {
@@ -15,6 +17,7 @@ body {
 	min-height: 100vh;
 	font-family: 'Open Sans';
 	background: #fafafa;
+	
 }
 
 a {
@@ -189,8 +192,20 @@ a {
 		margin-left: 0;
 		text-align: center;
 	}
+
 }
 
+.lottie-text-section2 {
+	display: flex;
+    align-items: center;
+    margin: 20px 0;
+    flex-direction: row-reverse;
+  }
+.div-convenios2{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 @media screen and (max-width: 500px) {
 	.cards-wrapper {
 		padding: 4rem 2rem;
@@ -198,6 +213,17 @@ a {
 
 	.card-home {
 		max-width: calc(100vw - 4rem);
+	}
+	.lottie-text-section{
+		flex-direction: column;
+		text-align: justify;
+	}
+	.lottie-text-section2{
+        flex-direction: column;
+        text-align: justify;
+    }
+	.div-convenios2{
+		flex-direction: column;
 	}
 }
 
@@ -214,15 +240,17 @@ a {
     display: flex;
     justify-content: center;
   }
+  .lottie-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
   
   .text-item {
     flex: 1;
     padding: 0 20px;
   }
   
-  .lottie-text-section.reverse {
-    flex-direction: row-reverse;
-  }
   
   .lottie-item > div {
     max-width: 700px; /* Ajusta el tamaño de la animación si es necesario */

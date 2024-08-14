@@ -120,6 +120,7 @@ h1 {
   align-items: flex-end; /* Alinear imágenes a la derecha */
   gap: 15px; /* Espacio entre las imágenes */
 }
+
 .side-images2 {
   display: flex;
   flex-direction: column;
