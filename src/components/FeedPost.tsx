@@ -1,6 +1,6 @@
-import { Box, HStack, Avatar, Text, IconButton, Image, Flex } from "@chakra-ui/react";
+import { Box, HStack, Avatar, Text, IconButton, Image, Flex, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisH, faTrashAlt, faThumbtack } from "@fortawesome/free-solid-svg-icons"; // Agrega los íconos que necesitas
 
 interface User {
     name: string;
@@ -13,9 +13,11 @@ interface FeedPostProps {
     content: string;
     image?: string;
     videoUrl?: string;
+    onDelete?: () => void; // Callback para eliminar el post
+    onPin?: () => void; // Callback para fijar el post
 }
   
-const FeedPost = ({ user, time, content, image, videoUrl }: FeedPostProps) => {
+const FeedPost = ({ user, time, content, image, videoUrl, onDelete, onPin }: FeedPostProps) => {
   return (
     <Box
       bg="#faf1eb"
@@ -40,14 +42,26 @@ const FeedPost = ({ user, time, content, image, videoUrl }: FeedPostProps) => {
             </Text>
           </Flex>
         </HStack>
-        <IconButton
-          icon={<FontAwesomeIcon icon={faEllipsisH} />}
-          aria-label="Más opciones"
-          variant="ghost"
-          color="black"
-          size="sm" 
-          _hover={{ bg: "#ffb987" }} // Personaliza el color de hover
-        />
+        {/* Menú desplegable con opciones de eliminar y fijar */}
+        <Menu>
+          <MenuButton
+            as={IconButton}
+            icon={<FontAwesomeIcon icon={faEllipsisH} />}
+            aria-label="Más opciones"
+            variant="ghost"
+            color="black"
+            size="sm"
+            _hover={{ bg: "#ffb987" }}
+          />
+          <MenuList >
+            <MenuItem icon={<FontAwesomeIcon icon={faTrashAlt} />} onClick={onDelete} color="#fd6a01" _hover={{bg: "#ffb987", color:"#000" }}>
+              Eliminar
+            </MenuItem>
+            <MenuItem icon={<FontAwesomeIcon icon={faThumbtack} />} onClick={onPin} _hover={{bg: "#ffb987" }}>
+              Fijar
+            </MenuItem>
+          </MenuList>
+        </Menu>
       </HStack>
       <Box mt={4}>
         <Text mb={2}>
