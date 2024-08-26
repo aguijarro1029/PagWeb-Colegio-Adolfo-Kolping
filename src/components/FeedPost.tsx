@@ -1,6 +1,6 @@
 import { Box, HStack, Avatar, Text, IconButton, Image, Flex, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisH, faTrashAlt, faThumbtack } from "@fortawesome/free-solid-svg-icons"; // Agrega los íconos que necesitas
+import { faEllipsisH, faTrashAlt, faThumbtack } from "@fortawesome/free-solid-svg-icons";
 
 interface User {
     name: string;
@@ -13,11 +13,13 @@ interface FeedPostProps {
     content: string;
     image?: string;
     videoUrl?: string;
-    onDelete?: () => void; // Callback para eliminar el post
-    onPin?: () => void; // Callback para fijar el post
+    onDelete?: () => void;
+    onPin?: () => void;
+    showMenu?: boolean; // Controla la visibilidad del menú
+    postId: string; // ID del post para manejar acciones como eliminar o fijar
 }
   
-const FeedPost = ({ user, time, content, image, videoUrl, onDelete, onPin }: FeedPostProps) => {
+const FeedPost: React.FC<FeedPostProps> = ({ user, time, content, image, videoUrl, onDelete, onPin, showMenu }) => {
   return (
     <Box
       bg="#faf1eb"
@@ -42,32 +44,33 @@ const FeedPost = ({ user, time, content, image, videoUrl, onDelete, onPin }: Fee
             </Text>
           </Flex>
         </HStack>
-        {/* Menú desplegable con opciones de eliminar y fijar */}
-        <Menu>
-          <MenuButton
-            as={IconButton}
-            icon={<FontAwesomeIcon icon={faEllipsisH} />}
-            aria-label="Más opciones"
-            variant="ghost"
-            color="black"
-            size="sm"
-            _hover={{ bg: "#ffb987" }}
-          />
-          <MenuList >
-            <MenuItem icon={<FontAwesomeIcon icon={faTrashAlt} />} onClick={onDelete} color="#fd6a01" _hover={{bg: "#ffb987", color:"#000" }}>
-              Eliminar
-            </MenuItem>
-            <MenuItem icon={<FontAwesomeIcon icon={faThumbtack} />} onClick={onPin} _hover={{bg: "#ffb987" }}>
-              Fijar
-            </MenuItem>
-          </MenuList>
-        </Menu>
+        {showMenu && ( // Solo muestra el menú si showMenu es true
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              icon={<FontAwesomeIcon icon={faEllipsisH} />}
+              aria-label="Más opciones"
+              variant="ghost"
+              color="black"
+              size="sm"
+              _hover={{ bg: "#ffb987" }}
+            />
+            <MenuList>
+              <MenuItem icon={<FontAwesomeIcon icon={faTrashAlt} />} onClick={onDelete} color="#fd6a01" _hover={{bg: "#ffb987", color:"#000" }}>
+                Eliminar
+              </MenuItem>
+              <MenuItem icon={<FontAwesomeIcon icon={faThumbtack} />} onClick={onPin} _hover={{bg: "#ffb987" }}>
+                Fijar
+              </MenuItem>
+            </MenuList>
+          </Menu>
+        )}
       </HStack>
       <Box mt={4}>
         <Text mb={2}>
           {content}
         </Text>
-        {image && <Image src={image} alt="Post image" borderRadius="md" />}
+        {image && !videoUrl && <Image src={image} alt="Post image" borderRadius="md" />} {/* Muestra la imagen si no es un video */}
         {videoUrl && (
           <Box mt={4}>
             <iframe

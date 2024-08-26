@@ -9,6 +9,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "proxy": "https://firestore.googleapis.com",
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.13.0",
@@ -22,6 +23,7 @@
     "@types/swiper": "^6.0.0",
     "bootstrap": "^5.3.3",
     "emoji-picker-react": "^4.11.1",
+    "firebase": "^10.13.0",
     "framer-motion": "^11.3.24",
     "ionicons": "^7.4.0",
     "lottie-react": "^2.4.0",
