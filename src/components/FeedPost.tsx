@@ -1,6 +1,6 @@
 import { Box, HStack, Avatar, Text, IconButton, Image, Flex, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisH, faTrashAlt, faThumbtack } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisH, faTrashAlt, faThumbtack, faUnlink } from "@fortawesome/free-solid-svg-icons";
 
 interface User {
     name: string;
@@ -13,32 +13,56 @@ interface FeedPostProps {
     content: string;
     image?: string;
     videoUrl?: string;
+    isPinned: boolean; // Indica si el post está fijado
     onDelete?: () => void;
     onPin?: () => void;
     showMenu?: boolean; // Controla la visibilidad del menú
     postId: string; // ID del post para manejar acciones como eliminar o fijar
 }
   
-const FeedPost: React.FC<FeedPostProps> = ({ user, time, content, image, videoUrl, onDelete, onPin, showMenu }) => {
+const FeedPost: React.FC<FeedPostProps> = ({ user, time, content, image, videoUrl, onDelete, onPin, showMenu, isPinned}) => {
   return (
     <Box
-      bg="#faf1eb"
+      bg={isPinned ? "#fff3e3" : "#faf1eb"} 
       borderRadius="md"
       p={6}
       borderWidth="1px"
-      borderColor="#fd6a01"
+      borderColor={isPinned ? "#ff9a3b" : "#fd6a01"} 
       color="black"
       mb={4}
       maxW="full"
       minH="300px"
+      boxShadow={isPinned ? "0px 4px 12px rgba(0, 0, 0, 0.1)" : "none"} 
     >
       <HStack justifyContent="space-between" alignItems="center" alignContent="center"> 
         <HStack spacing={3} alignItems="center"> 
           <Avatar size="md" name={user.name} src={user.avatar} />
           <Flex direction="column">
-            <Text fontWeight="bold">
-              {user.name}
+          <Flex alignItems="center">
+        <Text fontWeight="bold">{user.name}</Text>
+        {isPinned && (
+          <Flex alignItems="center" ml={1}>
+            <Text
+              fontSize="sm"
+              color="gray.700"
+              style={{
+                lineHeight: '1.5' // Ajusta la altura de línea para centrar verticalmente
+              }}
+            >
+              <FontAwesomeIcon
+              icon={faThumbtack}
+              style={{
+                color: '#000',
+                fontSize: '14px',
+                marginRight: '4px'
+              }}
+            />
+              Importante
+              
             </Text>
+          </Flex>
+        )}
+      </Flex>
             <Text fontSize="sm" color="gray.700">
               {time}
             </Text>
@@ -59,8 +83,12 @@ const FeedPost: React.FC<FeedPostProps> = ({ user, time, content, image, videoUr
               <MenuItem icon={<FontAwesomeIcon icon={faTrashAlt} />} onClick={onDelete} color="#fd6a01" _hover={{bg: "#ffb987", color:"#000" }}>
                 Eliminar
               </MenuItem>
-              <MenuItem icon={<FontAwesomeIcon icon={faThumbtack} />} onClick={onPin} _hover={{bg: "#ffb987" }}>
-                Fijar
+              <MenuItem
+                icon={<FontAwesomeIcon icon={isPinned ? faUnlink : faThumbtack} />} // Cambia el ícono dependiendo del estado de fijación
+                onClick={onPin}
+                _hover={{ bg: "#ffb987" }}
+              >                
+              {isPinned ? "Desfijar" : "Fijar"} {/* Cambia el texto dependiendo del estado de fijación */}
               </MenuItem>
             </MenuList>
           </Menu>

@@ -5,6 +5,5 @@ export interface Post {
     DOCUMENTO: string;
     FECHA: Date;
     URL: string;
-    
-    
+    ISPINNED: boolean;
 }

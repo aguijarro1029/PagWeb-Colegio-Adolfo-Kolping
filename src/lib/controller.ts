@@ -1,4 +1,4 @@
-import { collection, getDocs, query, where, getFirestore, addDoc, Timestamp, deleteDoc, doc } from 'firebase/firestore';
+import { collection, getDocs, query, where, getFirestore, addDoc, Timestamp, deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { app } from './firebase'; // Importa la app inicializada
 import { Usuario } from '../Models/Usuario';
 import { Post } from '../Models/Post';
@@ -38,6 +38,7 @@ export const createPost = async (post: Post): Promise<void> => {
       DOCUMENTO: post.DOCUMENTO,
       FECHA: Timestamp.fromDate(post.FECHA), // Convertimos la fecha a Timestamp de Firestore
       URL: post.URL,
+      ISPINNED: post.ISPINNED
     });
     console.log('Publicación creada con éxito');
   } catch (error) {
@@ -61,6 +62,7 @@ export const getPosts = async (): Promise<Post[]> => {
         DOCUMENTO: data.DOCUMENTO,
         FECHA: data.FECHA.toDate(), // Convertimos el Timestamp de Firestore a Date
         URL: data.URL,
+        ISPINNED: data.ISPINNED
       });
     });
 
@@ -79,5 +81,20 @@ export const deletePost = async (postId: string): Promise<void> => {
   } catch (error) {
     console.error('Error eliminando el post:', error);
     throw new Error('Error eliminando el post');
+  }
+};
+export const pinPost = async (postId: string, isPinned: boolean): Promise<void> => {
+  try {
+    const postRef = doc(firestore, 'Adolfo Kolping', 'Posts', '1', postId); // Referencia al documento del post en Firestore
+
+    // Actualizar el campo ISPINNED en el documento
+    await updateDoc(postRef, {
+      ISPINNED: isPinned,
+    });
+
+    console.log(`Post con id ${postId} ha sido ${isPinned ? 'fijado' : 'desfijado'} con éxito.`);
+  } catch (error) {
+    console.error('Error actualizando el estado de fijado del post:', error);
+    throw new Error('Error actualizando el estado de fijado del post');
   }
 };

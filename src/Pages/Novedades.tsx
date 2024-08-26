@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Avatar, Box, Button, Container, Heading, HStack, IconButton, Text, Textarea, useDisclosure, Image, useOutsideClick } from "@chakra-ui/react";
+import { Avatar, Box, Button, Container, Heading, HStack, IconButton, Text, Textarea, useDisclosure, Image, useOutsideClick, useToast } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClose, faImage, faLaughSquint, faVideo } from "@fortawesome/free-solid-svg-icons";
 import FeedPosts from "../components/FeedPosts";
@@ -8,19 +8,19 @@ import VideoLinkModal from "../components/VideoLinkModal";
 import EmojiPicker, { EmojiClickData } from "emoji-picker-react";
 import { Usuario } from '../Models/Usuario';
 import { Post } from '../Models/Post';
-import { createPost, deletePost, postsCollection } from '../lib/controller';
+import { createPost, postsCollection } from '../lib/controller';
 import { onSnapshot } from "firebase/firestore";
 
 const Novedades: React.FC = () => {
   const [user, setUser] = useState<Usuario | null>(null);
   const [posts, setPosts] = useState<Post[]>([]);
+  const toast = useToast(); // Inicializar useToast
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-
     // Escuchar cambios en tiempo real en la colección de publicaciones
     const unsubscribe = onSnapshot(postsCollection, (snapshot) => {
       const updatedPosts: Post[] = snapshot.docs.map((doc) => ({
@@ -30,6 +30,7 @@ const Novedades: React.FC = () => {
         DOCUMENTO: doc.data().DOCUMENTO,
         FECHA: doc.data().FECHA.toDate(),
         URL: doc.data().URL,
+        ISPINNED: doc.data().ISPINNED
       }));
       setPosts(updatedPosts);
     });
@@ -74,27 +75,50 @@ const Novedades: React.FC = () => {
 
   const handlePublish = async () => {
     if (user && postContent.trim()) {
-      const newPost: Post = {
-        id: "",  // `id` se genera automáticamente por Firestore
-        AUTOR: user.NOMBRE,
-        CONTENIDO: postContent,
-        DOCUMENTO: '',
-        FECHA: new Date(),
-        URL: image || videoLink || '',
-      };
-      await createPost(newPost);
+      try {
+        const newPost: Post = {
+          id: "",  // `id` se genera automáticamente por Firestore
+          AUTOR: user.NOMBRE,
+          CONTENIDO: postContent,
+          DOCUMENTO: '',
+          FECHA: new Date(),
+          URL: image || videoLink || '',
+          ISPINNED: false,
+        };
+        await createPost(newPost);
 
-      // Limpiar los estados después de publicar
-      setPostContent('');
-      setImage(null);
-      setVideoLink(null);
+        // Mostrar toast de éxito
+        toast({
+          title: "Post publicado.",
+          description: "Tu publicación ha sido exitosa.",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+          position:"top"
+        });
+
+        // Limpiar los estados después de publicar
+        setPostContent('');
+        setImage(null);
+        setVideoLink(null);
+      } catch (error) {
+        // Mostrar toast de error
+        toast({
+          title: "Error al publicar.",
+          description: "Hubo un problema al publicar tu post. Por favor, intenta de nuevo.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position:"top"
+        });
+      }
     }
   };
-
-  const handleDeletePost = async (postId: string) => {
-    await deletePost(postId);
-  };
-
+  const sortedPosts = [...posts].sort((a, b) => {
+    // Si 'b' está fijado y 'a' no está fijado, 'b' debería aparecer primero
+    // Si ambos tienen el mismo estado de fijado, no hay cambio de orden
+    return (b.ISPINNED === a.ISPINNED) ? 0 : (b.ISPINNED ? 1 : -1);
+  });
   return (
     <Container maxW={"container.2xl"}>
       <Heading as="h1" size="xl" textAlign="center" color="#fd6a01" mt={5}>
@@ -211,7 +235,19 @@ const Novedades: React.FC = () => {
                   onClick={onVideoModalOpen}
                 />
               </HStack>
-              <Button colorScheme="orange" bg="#fd6a01" borderRadius="full" onClick={handlePublish}>
+              <Button 
+              colorScheme="orange" 
+              bg="#fd6a01" 
+              borderRadius="full" 
+              onClick={handlePublish}
+              isDisabled={!postContent.trim()}
+              _disabled={{ 
+                bg: "orange.200", 
+                cursor: "not-allowed", 
+                color: "orange.400" 
+              }}
+              _hover={postContent.trim() ? { bg: "#ffb987", color: "#000" } : {}}
+              >
                 Publicar
               </Button>
             </HStack>
@@ -221,8 +257,24 @@ const Novedades: React.FC = () => {
       <Text fontSize="2xl" color="#fd6a01" textAlign={"center"} mt={5} mb={2}>
         Publicaciones recientes
       </Text>
-      <FeedPosts posts={posts} user={user} />
-
+      
+      {sortedPosts.length > 0 ? (
+      <FeedPosts posts={sortedPosts} user={user} />
+    ) : (
+      <Box
+        bg="orange.100"
+        borderRadius="md"
+        p={4}
+        textAlign="center"
+        mt={5}
+        borderWidth="1px"
+        borderColor="orange.300"
+      >
+        <Text fontSize="lg" color="orange.500">
+          Aún no hay publicaciones.
+        </Text>
+      </Box>
+    )}
       <ImageUploadModal isOpen={isImageModalOpen} onClose={onImageModalClose} onImageSelect={handleImageSelect} />
 
       <VideoLinkModal isOpen={isVideoModalOpen} onClose={onVideoModalClose} onVideoLinkSubmit={handleVideoLinkSubmit} />
