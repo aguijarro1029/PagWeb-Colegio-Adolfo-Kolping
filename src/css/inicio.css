@@ -476,6 +476,15 @@ a:hover {
 .thumbnail .item:hover .hover-content {
   opacity: 1;
 }
+.carousel .list .item .content button:hover {
+  background-color: #d15500; /* Cambiar el color de fondo en hover */
+  transition: background-color 0.3s ease-in-out;
+}
+.carousel .list .item .content .title,
+.carousel .list .item .content .topic {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
 
 /* Responsive Styles */
 @media (max-width: 1024px) {
@@ -529,22 +538,28 @@ a:hover {
   }
 
   .carousel .list .item .content {
-    top: 5%;
+    top: 2%; /* Reducir el top para asegurar que todo el contenido sea visible */
     max-width: 100%;
-    
+    padding: 10px; /* Reducir padding para ahorrar espacio */
   }
 
   .carousel .list .item .content .title,
   .carousel .list .item .content .topic {
-    font-size: 2em;
+    font-size: 1.8em; /* Ajustar tamaño de la fuente */
+    line-height: 1.2em; /* Reducir line-height para ahorrar espacio vertical */
   }
 
   .carousel .list .item .content .des {
-    font-size: 0.8em;
+    font-size: 0.75em; /* Ajustar tamaño de la descripción */
+  }
+
+  .carousel .list .item .content button {
+    font-size: 0.9em; /* Reducir tamaño del texto en el botón */
+    padding: 8px 15px; /* Reducir padding del botón */
   }
 
   .thumbnail {
-    display: none; /* Ocultar thumbnails en pantallas menores a 480px */
+    display: none; /* Mantener oculto en pantallas pequeñas */
   }
 }
 

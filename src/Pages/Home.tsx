@@ -21,7 +21,6 @@ import municipio from '../assets/Img/convenios/municipioriobamba.png'
 import imagenInicio1 from '../assets/Img/Imagen-inicio5.jpg'
 import asamblea from '../assets/Img/convenios/asamblea.png'
 import prefectura from '../assets/Img/convenios/prefecturachimborazo.png'
-import logo from '../assets/Img/logo_adolfo.png';
 
 
 const Home: React.FC = () => {
