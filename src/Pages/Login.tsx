@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/login.css';
 import { getUser } from '../lib/controller';
 import { Usuario } from '../Models/Usuario';
-import Swal from 'sweetalert2'
+import { useToast } from "@chakra-ui/react";
+
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Login: React.FC = () => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-
+  const toast = useToast(); 
   const handleBack = () => {
     navigate('/');
   };
@@ -62,10 +63,13 @@ const Login: React.FC = () => {
       localStorage.setItem('user', JSON.stringify(user)); // Guarda el usuario en localStorage
       navigate('/'); // Navega a la página de inicio o cualquier otra
     } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Credenciales incorrectas. Inténtalo de nuevo",
+      toast({
+        title: "Error",
+        description: "Credenciales incorrectas. Inténtalo de nuevo",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position:"top"
       });
     }
   };
