@@ -79,8 +79,13 @@ const Header: React.FC = () => {
               <FontAwesomeIcon icon={faEnvelope}/> Contacto
             </Link>
           </li>
+          <li className='login-nav'>
+            <Link className={`nav-links ${isActive('/login')}`} to="/login" onClick={handleLinkClick}>
+                <FontAwesomeIcon icon={faUser }/>
+              </Link>
+          </li>
         </ul>
-          <div>
+          <div className='login-nav2'>
             <Link className={`nav-links ${isActive('/login')}`} to="/login" onClick={handleLinkClick}>
               <FontAwesomeIcon icon={faUser }/>
             </Link>
