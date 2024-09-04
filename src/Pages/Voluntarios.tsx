@@ -4,7 +4,7 @@ import '../css/Estudiantes.css';
 const Voluntarios: React.FC = () => {
   const images = [
     "https://lh3.googleusercontent.com/proxy/XT78H8KsN366aDOmDZiIJ0q0uBkh81LZHtfnOh6CjxQmCHDt3fYalEDXNnbLleDHnyc58sI-w-Ae09PHJz6TxSjyg_FCbghr3hsIoCSg9QYpFNFjkbK2RpEHONTqZGi_",
-    "https://lh3.googleusercontent.com/proxy/IqhaB7MZloe7fxFmDLUPvjtiFxRaq8rtLQEULXQYHt3RMo1BTjGuI8_KuChvkRgpfURjgzs6psB_7ywb6JEFOOX_gYEu10iWhUf6rHoFQo7yVdmFwW-V0k54xlONJjEEedab2wX7-uNyqQ",
+    "https://lh3.googleusercontent.com/proxy/FHCpPcAc52y7Y7mMb6SPsDVyXxpGhpRPLoVjAgA1tkJK5SwDWnKRWkgBGKxgdkWgKFeklCfk1L-HqD0ccDh7Ai1EOtWodDBPKJrkCFjjrEtYLuXk5pfShwivmDSLD8qcExWHDHAdLw",
     "https://i.ytimg.com/vi/WxRQvM9elAU/maxresdefault.jpg",
   ];
 

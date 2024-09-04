@@ -1,19 +1,18 @@
-import React, { useState  } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/login.css';
 import { getUser } from '../lib/controller';
 import { Usuario } from '../Models/Usuario';
 import { useToast } from "@chakra-ui/react";
 
-
 const Login: React.FC = () => {
   const navigate = useNavigate();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const toast = useToast(); 
+
   const handleBack = () => {
     navigate('/');
   };
@@ -28,8 +27,9 @@ const Login: React.FC = () => {
   };
 
   const validatePassword = (value: string) => {
-    if (value.length < 6) {
-      setPasswordError('La contraseña debe tener al menos 6 caracteres.');
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordRegex.test(value)) {
+      setPasswordError('La contraseña debe tener al menos 8 caracteres, incluyendo una letra mayúscula, una minúscula, un número y un símbolo.');
     } else {
       setPasswordError('');
     }
@@ -69,7 +69,7 @@ const Login: React.FC = () => {
         status: "error",
         duration: 5000,
         isClosable: true,
-        position:"top"
+        position: "top"
       });
     }
   };
@@ -98,6 +98,7 @@ const Login: React.FC = () => {
                 placeholder="Contraseña"
                 value={password}
                 onChange={handlePasswordChange}
+                className={passwordError ? 'error' : ''}
               />
               {passwordError && <span className="error">{passwordError}</span>}
             </div>
