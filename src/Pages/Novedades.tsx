@@ -10,6 +10,8 @@ import { Usuario } from '../Models/Usuario';
 import { Post } from '../Models/Post';
 import { createPost, postsCollection } from '../lib/controller';
 import { onSnapshot } from "firebase/firestore";
+import { uploadImage } from '../lib/controller';
+
 
 const Novedades: React.FC = () => {
   const [user, setUser] = useState<Usuario | null>(null);
@@ -53,9 +55,23 @@ const Novedades: React.FC = () => {
     handler: () => setIsPickerVisible(false),
   });
 
-  const handleImageSelect = (selectedImage: string) => {
-    setImage(selectedImage);
+  const handleImageSelect = async (file: File) => {
+    try {
+      const imageUrl = await uploadImage(file);
+      setImage(imageUrl);  // Guarda la URL en el estado local
+    } catch (error) {
+      // Verifica si el error es una instancia de Error
+      const errorMessage = error instanceof Error ? error.message : "Error desconocido al subir la imagen";
+      toast({
+        title: "Error al subir imagen",
+        description: errorMessage,
+        status: "error",
+        duration: 5000,
+        isClosable: true
+      });
+    }
   };
+  
 
   const handleVideoLinkSubmit = (link: string) => {
     setVideoLink(link);
@@ -82,38 +98,33 @@ const Novedades: React.FC = () => {
           CONTENIDO: postContent,
           DOCUMENTO: '',
           FECHA: new Date(),
-          URL: image || videoLink || '',
+          URL: image || "",  // Usa la URL de la imagen almacenada en el estado
           ISPINNED: false,
         };
         await createPost(newPost);
-
-        // Mostrar toast de éxito
-        toast({
-          title: "Post publicado.",
-          description: "Tu publicación ha sido exitosa.",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-          position:"top"
-        });
-
-        // Limpiar los estados después de publicar
         setPostContent('');
         setImage(null);
         setVideoLink(null);
-      } catch (error) {
-        // Mostrar toast de error
         toast({
-          title: "Error al publicar.",
-          description: "Hubo un problema al publicar tu post. Por favor, intenta de nuevo.",
+          title: "Publicación exitosa",
+          description: "Tu publicación ha sido creada exitosamente.",
+          status: "success",
+          duration: 5000,
+          isClosable: true
+        });
+      } catch (error) {
+        const errorMessage = error instanceof Error ? error.message : "Error desconocido al publicar";
+        toast({
+          title: "Error al publicar",
+          description: errorMessage,
           status: "error",
           duration: 5000,
-          isClosable: true,
-          position:"top"
+          isClosable: true
         });
       }
     }
   };
+  
   const sortedPosts = [...posts].sort((a, b) => {
     // Si 'b' está fijado y 'a' no está fijado, 'b' debería aparecer primero
     // Si ambos tienen el mismo estado de fijado, no hay cambio de orden

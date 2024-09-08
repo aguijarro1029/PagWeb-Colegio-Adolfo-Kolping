@@ -2,9 +2,14 @@ import { collection, getDocs, query, where, getFirestore, addDoc, Timestamp, del
 import { app } from './firebase'; // Importa la app inicializada
 import { Usuario } from '../Models/Usuario';
 import { Post } from '../Models/Post';
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+
+
+
 
 // Inicializa Firestore
 const firestore = getFirestore(app);
+const storage = getStorage(app);
 
 // Referencias a las colecciones
 export const usuarios = collection(firestore, 'Adolfo Kolping', 'Usuario', '1');
@@ -98,3 +103,14 @@ export const pinPost = async (postId: string, isPinned: boolean): Promise<void> 
     throw new Error('Error actualizando el estado de fijado del post');
   }
 };
+// Función para subir una imagen a Firebase Storage y obtener la URL
+export const uploadImage = async (file: File): Promise<string> => {
+  if (!file) throw new Error("Archivo no proporcionado");
+
+  const storageRef = ref(storage, `images/${file.name}`);
+  const uploadTaskSnapshot = await uploadBytesResumable(storageRef, file);
+  const downloadUrl = await getDownloadURL(uploadTaskSnapshot.ref);
+  console.log('Imagen subida y disponible en:', downloadUrl);
+  return downloadUrl;
+};
+
