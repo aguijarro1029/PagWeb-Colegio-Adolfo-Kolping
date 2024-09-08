@@ -79,7 +79,7 @@ const FeedPosts: React.FC<FeedPostsProps> = ({ posts, user }) => {
             }}
             time={formatDistanceToNow(new Date(post.FECHA), { addSuffix: true, locale: es })} // Usa `formatDistanceToNow` para una fecha amigable
             content={post.CONTENIDO}
-            image={post.URL} 
+            image={post.DOCUMENTO} 
             videoUrl={post.URL.includes("youtube.com") ? post.URL : undefined}
             onDelete={() => handleDeletePost(post.id)}
             onPin={() => handlePinPost(post.id, post.ISPINNED)} // Pasa el estado actual de fijación

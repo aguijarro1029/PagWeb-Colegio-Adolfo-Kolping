@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Button, Input, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton } from "@chakra-ui/react";
 
 interface VideoLinkModalProps {
@@ -7,8 +7,19 @@ interface VideoLinkModalProps {
   onVideoLinkSubmit: (link: string) => void; // Callback para manejar el enlace del video
 }
 
-const VideoLinkModal: React.FC<VideoLinkModalProps> = ({ isOpen, onClose, onVideoLinkSubmit }) => {
+const VideoLinkModal: React.FC<VideoLinkModalProps> = ({
+  isOpen,
+  onClose,
+  onVideoLinkSubmit,
+}) => {
   const [videoLink, setVideoLink] = useState<string>("");
+
+  // Limpia el input cuando el modal se cierra
+  useEffect(() => {
+    if (!isOpen) {
+      setVideoLink("");
+    }
+  }, [isOpen]);
 
   const handleLinkChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setVideoLink(event.target.value);
@@ -17,7 +28,7 @@ const VideoLinkModal: React.FC<VideoLinkModalProps> = ({ isOpen, onClose, onVide
   const handleSubmit = () => {
     if (videoLink) {
       onVideoLinkSubmit(videoLink); // Llama al callback para manejar el enlace
-      onClose(); 
+      onClose(); // Cierra el modal
     }
   };
 
@@ -29,8 +40,8 @@ const VideoLinkModal: React.FC<VideoLinkModalProps> = ({ isOpen, onClose, onVide
         <ModalCloseButton />
         <ModalBody>
           <Box>
-            <Input 
-              placeholder="https://www.youtube.com/watch?v=example" 
+            <Input
+              placeholder="https://www.youtube.com/watch?v=example"
               value={videoLink}
               onChange={handleLinkChange}
               mb={4}

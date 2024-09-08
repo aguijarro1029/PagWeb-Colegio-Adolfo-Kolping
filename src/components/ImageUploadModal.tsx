@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, DragEvent } from "react";
+import React, { useState, useEffect, ChangeEvent, DragEvent } from "react";
 import { Box, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalCloseButton, Input, Text, Icon, Divider, Button } from "@chakra-ui/react";
 import { FaCloudUploadAlt } from "react-icons/fa";
 
@@ -11,32 +11,37 @@ interface ImageUploadModalProps {
 const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, onImageSelect }) => {
   const [file, setFile] = useState<File | null>(null);  // Guarda el archivo seleccionado
   const [selectedImage, setSelectedImage] = useState<string | null>(null); // Estado para la vista previa de la imagen
-  const [isDragging, setIsDragging] = useState(false);
+
+  useEffect(() => {
+    // Limpia el estado cuando el modal se cierra
+    if (!isOpen) {
+      setFile(null);
+      setSelectedImage(null);
+    }
+  }, [isOpen]);  // Dependencia en la apertura del modal
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
       const file = event.target.files[0];
-      setFile(file);  // Guarda el archivo
-      setSelectedImage(URL.createObjectURL(file));  // Para mostrar la vista previa
+      setFile(file);
+      setSelectedImage(URL.createObjectURL(file));
     }
   };
 
   const handleDragOver = (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
-    setIsDragging(true);
   };
 
-  const handleDragLeave = () => {
-    setIsDragging(false);
+  const handleDragLeave = (event: DragEvent<HTMLDivElement>) => {
+    event.preventDefault();
   };
 
   const handleDrop = (event: DragEvent<HTMLDivElement>) => {
     event.preventDefault();
-    setIsDragging(false);
     if (event.dataTransfer.files && event.dataTransfer.files[0]) {
       const file = event.dataTransfer.files[0];
-      setFile(file);  // Guarda el archivo
-      setSelectedImage(URL.createObjectURL(file));  // Para mostrar la vista previa
+      setFile(file);
+      setSelectedImage(URL.createObjectURL(file));
     }
   };
 
@@ -44,7 +49,6 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
     if (file) {
       onImageSelect(file);  // Llama al callback con el archivo
       onClose();  // Cierra el modal
-      setSelectedImage(null); // Limpia la vista previa al cerrar el modal
     }
   };
 
@@ -60,10 +64,8 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
             borderRadius="md"
             p={10}
             textAlign="center"
-            mb={4}
             cursor="pointer"
             _hover={{ bg: "#fde7d3" }}
-            bg={isDragging ? "#fde7d3" : "transparent"}
             onClick={() => document.getElementById('fileInput')?.click()}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -82,7 +84,7 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, on
           </Box>
           {selectedImage && (
             <Box mt={4} textAlign="center">
-              <Divider my={4} bg={"black"} orientation="horizontal"/>
+              <Divider my={4} orientation="horizontal"/>
               <Text color="#fd6a01">Vista previa:</Text>
               <img src={selectedImage} alt="Preview" style={{ maxWidth: "100%", borderRadius: "8px" }} />
               <Button colorScheme="orange" bg="#fd6a01" borderRadius="full" my={4} onClick={handleAddImage}>

@@ -96,9 +96,9 @@ const Novedades: React.FC = () => {
           id: "",  // `id` se genera automáticamente por Firestore
           AUTOR: user.NOMBRE,
           CONTENIDO: postContent,
-          DOCUMENTO: '',
+          DOCUMENTO: image || "",
           FECHA: new Date(),
-          URL: image || "",  // Usa la URL de la imagen almacenada en el estado
+          URL: videoLink || "",  // Usa la URL de la imagen almacenada en el estado
           ISPINNED: false,
         };
         await createPost(newPost);
