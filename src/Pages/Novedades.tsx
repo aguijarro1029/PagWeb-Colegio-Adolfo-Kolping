@@ -71,8 +71,6 @@ const Novedades: React.FC = () => {
       });
     }
   };
-  
-
   const handleVideoLinkSubmit = (link: string) => {
     setVideoLink(link);
   };

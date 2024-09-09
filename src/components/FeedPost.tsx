@@ -1,4 +1,4 @@
-import { Box, HStack, Avatar, Text, IconButton, Image, Flex, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import { Box, HStack, Avatar, Text, IconButton, Image, Flex, Menu, MenuButton, MenuList, MenuItem, useDisclosure, Modal, ModalOverlay, ModalContent, ModalBody, CloseButton } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH, faTrashAlt, faThumbtack, faUnlink } from "@fortawesome/free-solid-svg-icons";
 
@@ -6,7 +6,7 @@ interface User {
     name: string;
     avatar: string;
 }
-  
+
 interface FeedPostProps {
     user: User;
     time: string;
@@ -19,8 +19,10 @@ interface FeedPostProps {
     showMenu?: boolean; // Controla la visibilidad del menú
     postId: string; // ID del post para manejar acciones como eliminar o fijar
 }
-  
+
 const FeedPost: React.FC<FeedPostProps> = ({ user, time, content, image, videoUrl, onDelete, onPin, showMenu, isPinned}) => {
+  const { isOpen, onOpen, onClose } = useDisclosure(); // Chakra UI modal control
+
   return (
     <Box
       bg={isPinned ? "#fff3e3" : "#faf1eb"} 
@@ -95,12 +97,43 @@ const FeedPost: React.FC<FeedPostProps> = ({ user, time, content, image, videoUr
         )}
       </HStack>
       <Box mt={4}>
-        <Text mb={2}>
+        <Text mb={4}>
           {content}
         </Text>
-        {image && !videoUrl && <Image src={image} alt="Post image" borderRadius="md" />} {/* Muestra la imagen si no es un video */}
+        {image && (
+          <>
+            <Image
+              src={image}
+              alt="Post image"
+              borderRadius="md"
+              mb={videoUrl ? 4 : 0} // Añade espacio inferior solo si también hay video
+              maxH="500px" // Estilo más común en redes sociales
+              objectFit="cover" // Asegura que la imagen ocupe bien su espacio
+              w="100%"
+              cursor="pointer" // Indica que la imagen es clickeable
+              onClick={onOpen} // Abre el modal al hacer clic en la imagen
+            />
+            <Modal isOpen={isOpen} onClose={onClose} size="full" closeOnOverlayClick={true}>
+              <ModalOverlay />
+              <ModalContent bg="transparent" boxShadow="none">
+                {/* Botón para cerrar el modal */}
+                <CloseButton
+                  position="absolute"
+                  top="10px"
+                  right="10px"
+                  color="white"
+                  size="lg"
+                  onClick={onClose}
+                />
+                <ModalBody p={0} display="flex" justifyContent="center" alignItems="center">
+                  <Image src={image} alt="Post image enlarged" maxH="90vh" objectFit="contain" />
+                </ModalBody>
+              </ModalContent>
+            </Modal>
+          </>
+        )}
         {videoUrl && (
-          <Box mt={4}>
+          <Box mt={image ? 4 : 0} w="100%">
             <iframe
               width="100%"
               height="315"
@@ -108,6 +141,9 @@ const FeedPost: React.FC<FeedPostProps> = ({ user, time, content, image, videoUr
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
+              style={{
+                borderRadius: '8px', // Bordes redondeados para armonizar con el diseño
+              }}
             ></iframe>
           </Box>
         )}
