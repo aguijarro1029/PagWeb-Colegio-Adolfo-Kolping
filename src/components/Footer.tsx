@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import '@fortawesome/fontawesome-free/css/all.css';
 import logo from '../assets/Img/Logo_Ut.png';
 const Footer: React.FC = () => {
@@ -26,11 +26,11 @@ const Footer: React.FC = () => {
           <div className="col-md-4" style={{marginTop:'40px'}}>
             <h5>Contáctanos</h5>
             <p><FontAwesomeIcon icon={faEnvelope} /> uedukolping@gmail.com</p>
-            <p><FontAwesomeIcon icon={faPhone} /> +593 xx xxx xxx</p>
+            {/* <p><FontAwesomeIcon icon={faPhone} /> +593 xx xxx xxx</p> */}
             <div>
-              <a href="https://facebook.com" className="text-light mx-2"><FontAwesomeIcon icon={faFacebook} size="2x" /></a>
-              <a href="https://twitter.com" className="text-light mx-2"><FontAwesomeIcon icon={faTwitter} size="2x" /></a>
-              <a href="https://instagram.com" className="text-light mx-2"><FontAwesomeIcon icon={faInstagram} size="2x" /></a>
+              <a href="https://www.facebook.com/ueduadolfokolping" className="text-light mx-2"><FontAwesomeIcon icon={faFacebook} size="2x" /></a>
+              {/* <a href="https://twitter.com" className="text-light mx-2"><FontAwesomeIcon icon={faTwitter} size="2x" /></a>
+              <a href="https://instagram.com" className="text-light mx-2"><FontAwesomeIcon icon={faInstagram} size="2x" /></a> */}
             </div>
           </div>
         </div>

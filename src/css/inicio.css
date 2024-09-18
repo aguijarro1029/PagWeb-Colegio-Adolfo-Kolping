@@ -376,7 +376,7 @@ a:hover {
 .carousel .list .item .content .title,
 .carousel .list .item .content .topic {
   font-weight: bold;
-  font-size: 4.3em; 
+  font-size: 3.3em; 
   line-height: 1.3em;
 }
 
@@ -393,7 +393,19 @@ a:hover {
   border-radius: 40px;
   border: none;
 }
-
+.btn-novedades{
+  background-color: #fd6a01;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #eee;
+  border-radius: 40px;
+  border: none;
+  text-decoration: none;
+}
+.btn-novedades:hover{
+  background-color: #d15500; /* Cambiar el color de fondo en hover */
+  transition: background-color 0.3s ease-in-out;
+}
 .carousel .list .item .content button:nth-child(2) {
   background-color: transparent;
   color: #eee;

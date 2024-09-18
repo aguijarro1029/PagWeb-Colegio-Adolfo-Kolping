@@ -36,12 +36,7 @@ const Home: React.FC = () => {
       description: "Vicerrector"
     }
   ];
-  const handleScrollToHistory = () => {
-    const historySection = document.getElementById('history-section');
-    if (historySection) {
-      historySection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+
   return (
     <div>
         <div className="carousel">
@@ -54,8 +49,9 @@ const Home: React.FC = () => {
                 <div className='des'>La Unidad Educativa Adolfo Kolping brinda una educación integral en los Andes del Ecuador, ofreciendo formación básica y técnica.
                 </div>
                 <div className='buttons'>
-                  <button onClick={handleScrollToHistory} style={{padding:'12px', marginTop:'10px'}}>Aprende más</button>
+                   <a style={{padding:'12px', marginTop:'10px', textDecorationLine:'none'}} className='btn-novedades' href="/Novedades">Novedades</a>
                 </div>
+                
               </div>
             </div>
           </div>
